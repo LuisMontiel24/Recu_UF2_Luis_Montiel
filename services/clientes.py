@@ -1,4 +1,5 @@
 from config.database import connect_db
+from schemas.clientes_sch import clientes_schema
 
 
 async def insertar_cliente(nombre, apellido, email, descripcion, curso, ano, direccion, postal, contrasena) -> dict:
@@ -13,4 +14,9 @@ async def insertar_cliente(nombre, apellido, email, descripcion, curso, ano, dir
         return {"msg": "insertado correctamente"}
 
 
-
+async def obtener_clientes() -> list[dict]:
+    with connect_db() as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM clientes")
+        datos = cur.fetchall()
+        return clientes_schema(datos)
