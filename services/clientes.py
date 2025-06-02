@@ -36,3 +36,4 @@ async def eliminar_cliente(cliente_id: int) -> dict:
         cur.execute("DELETE FROM clientes WHERE id = %s", (cliente_id,))
         conn.commit()
         return {"msg": "eliminado correctamente"}
+"""hazme el comit 6"""

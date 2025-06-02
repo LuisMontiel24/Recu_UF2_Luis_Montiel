@@ -30,3 +30,4 @@ async def actualizar(cliente_id: int, request: Request) -> dict:
 @app.delete("/eliminar_cliente/{cliente_id}")
 async def eliminar(cliente_id: int) -> dict:
     return await eliminar_cliente(cliente_id)
+"""hazme el comit 6"""
