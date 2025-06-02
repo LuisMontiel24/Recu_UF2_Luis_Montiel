@@ -20,3 +20,11 @@ async def obtener_clientes() -> list[dict]:
         cur.execute("SELECT * FROM clientes")
         datos = cur.fetchall()
         return clientes_schema(datos)
+
+
+async def actualizar_cliente(cliente_id: int, apellido: str, direccion: str) -> dict:
+    with connect_db() as conn:
+        cur = conn.cursor()
+        cur.execute("UPDATE clientes SET apellido = %s, direccion = %s WHERE id = %s", (apellido, direccion, cliente_id))
+        conn.commit()
+        return {"msg": "actualizado correctamente"}
