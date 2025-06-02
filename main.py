@@ -26,3 +26,6 @@ async def listar() -> list[dict]:
 async def actualizar(cliente_id: int, request: Request) -> dict:
     datos = await request.json()
     return await actualizar_cliente(cliente_id, datos["apellido"], datos["direccion"])
+
+
+"""exerici5 no me va el commit jdoer"""

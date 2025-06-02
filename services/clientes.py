@@ -28,3 +28,5 @@ async def actualizar_cliente(cliente_id: int, apellido: str, direccion: str) -> 
         cur.execute("UPDATE clientes SET apellido = %s, direccion = %s WHERE id = %s", (apellido, direccion, cliente_id))
         conn.commit()
         return {"msg": "actualizado correctamente"}
+
+"""exerici5 no me va el commit jdoer"""
