@@ -28,3 +28,11 @@ async def actualizar_cliente(cliente_id: int, apellido: str, direccion: str) -> 
         cur.execute("UPDATE clientes SET apellido = %s, direccion = %s WHERE id = %s", (apellido, direccion, cliente_id))
         conn.commit()
         return {"msg": "actualizado correctamente"}
+
+
+async def eliminar_cliente(cliente_id: int) -> dict:
+    with connect_db() as conn:
+        cur = conn.cursor()
+        cur.execute("DELETE FROM clientes WHERE id = %s", (cliente_id,))
+        conn.commit()
+        return {"msg": "eliminado correctamente"}
