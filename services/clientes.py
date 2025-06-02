@@ -10,6 +10,7 @@ async def insertar_cliente(nombre, apellido, email, descripcion, curso, ano, dir
         """
         cur.execute(sql, (nombre, apellido, email, descripcion, curso, ano, direccion, postal, contrasena))
         conn.commit()
-        return {"msg": "insertado "}
+        return {"msg": "insertado correctamente"}
+
 
 
