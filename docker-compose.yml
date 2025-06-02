@@ -1,8 +1,7 @@
-version: '3.1'
 services:
   db:
-    image: postgres:14
-    container_name: contenedor
+    image: postgres:15
+    restart: always
     environment:
       POSTGRES_USER: luis
       POSTGRES_PASSWORD: luis
@@ -10,18 +9,15 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - local_pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
+
   pgadmin:
-    image: dpage/pgadmin
-    container_name: pgadmin
-    ports:
-      - "80:80"
+    image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: 2024.luis_montiel@iticbcn.cat
+      PGADMIN_DEFAULT_EMAIL: 2024_luis.montiel@iticbcn.cat
       PGADMIN_DEFAULT_PASSWORD: luis123
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - "5050:80"
 
 volumes:
-  local_pgdata:
-  pgadmin-data:
+  postgres_data:
